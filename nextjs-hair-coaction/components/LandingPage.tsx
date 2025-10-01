@@ -47,15 +47,15 @@ export default function LandingPage() {
 
   const founders = [
     {
-      name: 'Co-Founder',
+      name: 'Vanshika Gupta',
       title: 'Founder & CEO',
       image: '/images/founders/founder-1.jpg',
       bio: 'Passionate about revolutionizing the hair care industry with innovative technology and personalized solutions for professionals and clients worldwide.',
       credentials: ['Industry Expert', 'Technology Innovator', 'Community Builder']
     },
     {
-      name: 'Co-Founder',
-      title: 'Co-Founder & CTO',
+      name: 'Komal',
+      title: 'Co-Founder',
       image: '/images/founders/founder-2.jpg',
       bio: 'Dedicated to creating a seamless platform that empowers hair care professionals with cutting-edge tools and connects them with a thriving community.',
       credentials: ['Platform Architect', 'UX/UI Specialist', 'Growth Strategist']
