@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import Sidebar from '@/components/Sidebar'
 import BeautifulLoader from '@/components/BeautifulLoader'
+import { Moon, Sun } from 'lucide-react'
 
 export default function DashboardLayout({
   children,
@@ -13,7 +14,7 @@ export default function DashboardLayout({
 }) {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true) // Dark mode enabled by default
   const router = useRouter()
   const supabase = createClient()
 
@@ -67,11 +68,11 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className={`min-h-screen flex flex-col relative overflow-hidden ${darkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-pink-50 via-orange-50 to-pink-100'}`}>
+    <div className={`min-h-screen flex flex-col relative overflow-hidden ${darkMode ? 'bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900' : 'bg-gradient-to-br from-pink-50 via-orange-50 to-pink-100'}`}>
       {/* Background Blobs */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className={`absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] ${darkMode ? 'bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-pink-400 via-rose-400 to-orange-300'} rounded-full blur-3xl opacity-40 animate-blob3d`} />
-        <div className={`absolute bottom-[-10%] right-[-10%] w-[35vw] h-[35vw] ${darkMode ? 'bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900' : 'bg-gradient-to-br from-orange-300 via-pink-300 to-rose-400'} rounded-full blur-3xl opacity-30 animate-blob3d animation-delay-2000`} />
+        <div className={`absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full blur-3xl animate-blob3d ${darkMode ? 'bg-gradient-to-br from-purple-600/30 via-pink-600/20 to-blue-600/30' : 'bg-gradient-to-br from-pink-400 via-rose-400 to-orange-300 opacity-40'}`} />
+        <div className={`absolute bottom-[-10%] right-[-10%] w-[35vw] h-[35vw] rounded-full blur-3xl animate-blob3d animation-delay-2000 ${darkMode ? 'bg-gradient-to-br from-blue-600/20 via-purple-600/30 to-pink-600/20' : 'bg-gradient-to-br from-orange-300 via-pink-300 to-rose-400 opacity-30'}`} />
       </div>
 
       <div className="flex flex-1 relative z-10">
@@ -82,9 +83,9 @@ export default function DashboardLayout({
           <div className="flex justify-end p-4">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className={`px-4 py-2 rounded-lg font-semibold shadow transition-all duration-300 ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-pink-200 text-pink-900 hover:bg-pink-300'}`}
+              className={`p-3 rounded-xl font-semibold shadow-lg transition-all duration-300 flex items-center gap-2 ${darkMode ? 'bg-purple-900/50 border border-purple-700/50 text-purple-300 hover:bg-purple-800/50' : 'bg-pink-200 text-pink-900 hover:bg-pink-300'}`}
             >
-              {darkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
+              {darkMode ? <><Sun className="h-5 w-5" /> Light Mode</> : <><Moon className="h-5 w-5" /> Dark Mode</>}
             </button>
           </div>
 
