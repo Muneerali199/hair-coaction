@@ -178,6 +178,7 @@ const VideoDemo = () => {
 
 export default function DashboardPage() {
   const [user, setUser] = useState<any>(null)
+  const [darkMode] = useState(true) // Match landing page default
   const supabase = createClient()
 
   useEffect(() => {
@@ -191,7 +192,11 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Welcome Header with Quick Actions */}
-      <div className="bg-gradient-to-r from-pink-500 via-orange-400 to-rose-500 rounded-3xl p-8 shadow-2xl text-white">
+      <div className={`rounded-3xl p-8 shadow-2xl text-white ${
+        darkMode 
+          ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600' 
+          : 'bg-gradient-to-r from-pink-500 via-orange-400 to-rose-500'
+      }`}>
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <div>
             <h2 className="text-4xl font-black mb-2">
@@ -221,8 +226,8 @@ export default function DashboardPage() {
             change: '+12%',
             trend: 'up',
             icon: Calendar, 
-            color: 'from-pink-400 to-rose-400',
-            bgColor: 'bg-pink-50'
+            color: 'from-purple-500 to-pink-500',
+            bgColor: darkMode ? 'bg-purple-900/50' : 'bg-pink-50'
           },
           { 
             label: 'Products Used', 
@@ -230,8 +235,8 @@ export default function DashboardPage() {
             change: '+3',
             trend: 'up',
             icon: Sparkles, 
-            color: 'from-rose-400 to-pink-500',
-            bgColor: 'bg-rose-50'
+            color: 'from-pink-500 to-blue-500',
+            bgColor: darkMode ? 'bg-pink-900/50' : 'bg-rose-50'
           },
           { 
             label: 'Goals Achieved', 
@@ -239,8 +244,8 @@ export default function DashboardPage() {
             change: '80%',
             trend: 'up',
             icon: Target, 
-            color: 'from-pink-500 to-orange-400',
-            bgColor: 'bg-orange-50'
+            color: 'from-blue-500 to-purple-500',
+            bgColor: darkMode ? 'bg-blue-900/50' : 'bg-orange-50'
           },
           { 
             label: 'Health Score', 
@@ -248,23 +253,25 @@ export default function DashboardPage() {
             change: '+0.5',
             trend: 'up',
             icon: Heart, 
-            color: 'from-orange-400 to-pink-500',
-            bgColor: 'bg-pink-50'
+            color: 'from-purple-600 to-pink-600',
+            bgColor: darkMode ? 'bg-purple-900/50' : 'bg-pink-50'
           },
         ].map((stat, index) => (
           <div key={index} className="group">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-pink-100 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ${
+              darkMode ? 'bg-gray-800/50 border-purple-800/50' : 'bg-white/90 border-pink-100'
+            }`}>
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl ${stat.bgColor}`}>
                   <stat.icon className={`h-6 w-6 bg-gradient-to-r ${stat.color} bg-clip-text`} style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }} />
                 </div>
-                <div className={`flex items-center gap-1 px-3 py-1 rounded-full ${stat.trend === 'up' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} text-sm font-bold`}>
+                <div className={`flex items-center gap-1 px-3 py-1 rounded-full ${stat.trend === 'up' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'} text-sm font-bold`}>
                   <ArrowUp className={`h-4 w-4 ${stat.trend === 'down' ? 'rotate-180' : ''}`} />
                   {stat.change}
                 </div>
               </div>
-              <div className="text-3xl font-black text-gray-900 mb-1">{stat.value}</div>
-              <p className="text-gray-600 font-semibold">{stat.label}</p>
+              <div className={`text-3xl font-black mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{stat.value}</div>
+              <p className={`font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{stat.label}</p>
             </div>
           </div>
         ))}
@@ -275,32 +282,40 @@ export default function DashboardPage() {
       {/* Activity Grid */}
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Quick Actions */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-pink-100 shadow-xl">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Zap className="h-6 w-6 text-pink-500" />
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
+          darkMode ? 'bg-gray-800/50 border-purple-800/50' : 'bg-white/90 border-pink-100'
+        }`}>
+          <h3 className={`text-xl font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <Zap className={`h-6 w-6 ${darkMode ? 'text-purple-400' : 'text-pink-500'}`} />
             Quick Actions
           </h3>
           <div className="space-y-3">
             {[
-              { icon: Upload, label: 'Upload Progress Photo', color: 'from-pink-500 to-rose-500' },
-              { icon: Video, label: 'Record Hair Tutorial', color: 'from-rose-500 to-orange-500' },
-              { icon: Users, label: 'Join Community Chat', color: 'from-orange-500 to-pink-500' },
-              { icon: BarChart3, label: 'View Full Analytics', color: 'from-pink-600 to-rose-600' },
+              { icon: Upload, label: 'Upload Progress Photo', color: 'from-purple-500 to-pink-500' },
+              { icon: Video, label: 'Record Hair Tutorial', color: 'from-pink-500 to-blue-500' },
+              { icon: Users, label: 'Join Community Chat', color: 'from-blue-500 to-purple-500' },
+              { icon: BarChart3, label: 'View Full Analytics', color: 'from-purple-600 to-pink-600' },
             ].map((action, i) => (
-              <button key={i} className="w-full flex items-center gap-3 p-4 rounded-xl hover:bg-pink-50 transition-colors group">
+              <button key={i} className={`w-full flex items-center gap-3 p-4 rounded-xl transition-colors group ${
+                darkMode ? 'hover:bg-purple-900/50' : 'hover:bg-pink-50'
+              }`}>
                 <div className={`p-2 rounded-lg bg-gradient-to-r ${action.color}`}>
                   <action.icon className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-semibold text-gray-700 group-hover:text-pink-600 transition-colors">{action.label}</span>
+                <span className={`font-semibold transition-colors ${
+                  darkMode ? 'text-gray-300 group-hover:text-purple-300' : 'text-gray-700 group-hover:text-pink-600'
+                }`}>{action.label}</span>
               </button>
             ))}
           </div>
         </div>
 
         {/* Recent Activity */}
-        <div className="lg:col-span-2 bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-pink-100 shadow-xl">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Activity className="h-6 w-6 text-pink-500" />
+        <div className={`lg:col-span-2 backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
+          darkMode ? 'bg-gray-800/50 border-purple-800/50' : 'bg-white/90 border-pink-100'
+        }`}>
+          <h3 className={`text-xl font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <Activity className={`h-6 w-6 ${darkMode ? 'text-purple-400' : 'text-pink-500'}`} />
             Recent Activity
           </h3>
           <div className="space-y-4">
@@ -309,34 +324,36 @@ export default function DashboardPage() {
                 action: 'Completed "Hair Growth Fundamentals" course', 
                 time: '2 hours ago',
                 icon: CheckCircle,
-                color: 'text-green-500'
+                color: 'text-green-400'
               },
               { 
                 action: 'Booked consultation with Dr. Sarah Johnson', 
                 time: '5 hours ago',
                 icon: Calendar,
-                color: 'text-blue-500'
+                color: 'text-blue-400'
               },
               { 
                 action: 'Joined "Natural Hair Care" community group', 
                 time: '1 day ago',
                 icon: Users,
-                color: 'text-purple-500'
+                color: 'text-purple-400'
               },
               { 
                 action: 'Achieved "30-Day Streak" milestone', 
                 time: '2 days ago',
                 icon: Award,
-                color: 'text-orange-500'
+                color: 'text-pink-400'
               },
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-pink-50 transition-colors">
-                <div className={`p-2 rounded-lg bg-gray-100`}>
+              <div key={i} className={`flex items-start gap-4 p-4 rounded-xl transition-colors ${
+                darkMode ? 'hover:bg-purple-900/50' : 'hover:bg-pink-50'
+              }`}>
+                <div className={`p-2 rounded-lg ${darkMode ? 'bg-gray-900/50' : 'bg-gray-100'}`}>
                   <item.icon className={`h-5 w-5 ${item.color}`} />
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900">{item.action}</p>
-                  <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                  <p className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{item.action}</p>
+                  <p className={`text-sm flex items-center gap-1 mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     <Clock className="h-3 w-3" />
                     {item.time}
                   </p>
@@ -350,23 +367,25 @@ export default function DashboardPage() {
       <VideoDemo />
 
       {/* Progress Overview */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-pink-100 shadow-xl">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-          <TrendingUp className="h-7 w-7 text-pink-500" />
+      <div className={`backdrop-blur-sm rounded-2xl p-8 border shadow-xl ${
+        darkMode ? 'bg-gray-800/50 border-purple-800/50' : 'bg-white/90 border-pink-100'
+      }`}>
+        <h3 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <TrendingUp className={`h-7 w-7 ${darkMode ? 'text-purple-400' : 'text-pink-500'}`} />
           Your Progress Overview
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { label: 'Hair Health', progress: 85, color: 'from-pink-500 to-rose-500' },
-            { label: 'Learning Progress', progress: 65, color: 'from-rose-500 to-orange-500' },
-            { label: 'Community Engagement', progress: 92, color: 'from-orange-500 to-pink-500' },
+            { label: 'Hair Health', progress: 85, color: 'from-purple-500 to-pink-500' },
+            { label: 'Learning Progress', progress: 65, color: 'from-pink-500 to-blue-500' },
+            { label: 'Community Engagement', progress: 92, color: 'from-blue-500 to-purple-500' },
           ].map((item, i) => (
             <div key={i}>
               <div className="flex justify-between mb-2">
-                <span className="font-semibold text-gray-700">{item.label}</span>
-                <span className="font-bold text-gray-900">{item.progress}%</span>
+                <span className={`font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{item.label}</span>
+                <span className={`font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{item.progress}%</span>
               </div>
-              <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+              <div className={`h-3 rounded-full overflow-hidden ${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                 <div 
                   className={`h-full bg-gradient-to-r ${item.color} rounded-full transition-all duration-1000`}
                   style={{ width: `${item.progress}%` }}
