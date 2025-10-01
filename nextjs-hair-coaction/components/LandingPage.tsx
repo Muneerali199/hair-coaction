@@ -12,7 +12,7 @@ import {
 export default function LandingPage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true) // Dark mode enabled by default
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -373,10 +373,12 @@ export default function LandingPage() {
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
-              Everything You Need to <span className="text-transparent bg-gradient-to-r from-pink-500 via-orange-500 to-rose-500 bg-clip-text">Succeed</span>
+            <h2 className={`text-5xl lg:text-6xl font-black mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              Everything You Need to <span className={`text-transparent bg-gradient-to-r ${
+                darkMode ? 'from-purple-400 via-pink-400 to-blue-400' : 'from-pink-500 via-orange-500 to-rose-500'
+              } bg-clip-text`}>Succeed</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Comprehensive tools and resources designed for hair care professionals
             </p>
           </div>
@@ -427,13 +429,17 @@ export default function LandingPage() {
               }
             ].map((feature, index) => (
               <div key={index} className="group perspective-1000">
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100 hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                <div className={`relative backdrop-blur-sm rounded-3xl p-8 shadow-xl border hover:shadow-2xl hover:scale-105 transition-all duration-500 ${
+                  darkMode 
+                    ? 'bg-gray-800/50 border-purple-800/50' 
+                    : 'bg-white/80 border-pink-100'
+                }`}>
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
-                  <div className="flex items-center text-sm font-semibold text-pink-600">
+                  <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{feature.title}</h3>
+                  <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{feature.description}</p>
+                  <div className={`flex items-center text-sm font-semibold ${darkMode ? 'text-purple-400' : 'text-pink-600'}`}>
                     <CheckCircle className="h-5 w-5 mr-2" />
                     {feature.stats}
                   </div>
@@ -445,13 +451,19 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-pink-50/50 relative z-10">
+      <section id="testimonials" className={`py-20 px-4 sm:px-6 lg:px-8 relative z-10 ${
+        darkMode 
+          ? 'bg-gradient-to-br from-gray-900 to-purple-900/30' 
+          : 'bg-gradient-to-br from-white to-pink-50/50'
+      }`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
-              Loved by <span className="text-transparent bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text">Professionals</span>
+            <h2 className={`text-5xl lg:text-6xl font-black mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              Loved by <span className={`text-transparent bg-gradient-to-r ${
+                darkMode ? 'from-purple-400 to-pink-400' : 'from-pink-500 to-rose-500'
+              } bg-clip-text`}>Professionals</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               See what our community members say about their experience
             </p>
           </div>
@@ -459,16 +471,22 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className={`group ${activeTestimonial === index ? 'scale-105' : 'scale-100'} transition-all duration-500`}>
-                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100 hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                <div className={`backdrop-blur-sm rounded-3xl p-8 shadow-xl border hover:shadow-2xl hover:scale-105 transition-all duration-500 ${
+                  darkMode 
+                    ? 'bg-gray-800/50 border-purple-800/50' 
+                    : 'bg-white/90 border-pink-100'
+                }`}>
                   <div className="flex items-center mb-6">
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full border-4 border-pink-200 object-cover"
+                      className={`w-16 h-16 rounded-full border-4 object-cover ${
+                        darkMode ? 'border-purple-700' : 'border-pink-200'
+                      }`}
                     />
                     <div className="ml-4">
-                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      <h4 className={`font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{testimonial.name}</h4>
+                      <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{testimonial.role}</p>
                     </div>
                   </div>
                   <div className="flex mb-4">
@@ -476,8 +494,8 @@ export default function LandingPage() {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <Quote className="h-8 w-8 text-pink-200 mb-4" />
-                  <p className="text-gray-700 leading-relaxed">{testimonial.content}</p>
+                  <Quote className={`h-8 w-8 mb-4 ${darkMode ? 'text-purple-700' : 'text-pink-200'}`} />
+                  <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{testimonial.content}</p>
                 </div>
               </div>
             ))}
@@ -489,10 +507,12 @@ export default function LandingPage() {
       <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
-              Meet Our <span className="text-transparent bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text">Founders</span>
+            <h2 className={`text-5xl lg:text-6xl font-black mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              Meet Our <span className={`text-transparent bg-gradient-to-r ${
+                darkMode ? 'from-purple-400 to-pink-400' : 'from-pink-500 to-rose-500'
+              } bg-clip-text`}>Founders</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Passionate experts dedicated to revolutionizing the hair care industry
             </p>
           </div>
@@ -500,23 +520,29 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {founders.map((founder, index) => (
               <div key={index} className="group">
-                <div className="bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-pink-100 hover:shadow-3xl hover:scale-105 transition-all duration-500">
+                <div className={`backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border hover:shadow-3xl hover:scale-105 transition-all duration-500 ${
+                  darkMode 
+                    ? 'bg-gray-800/50 border-purple-800/50' 
+                    : 'bg-white/90 border-pink-100'
+                }`}>
                   <div className="relative h-80 overflow-hidden">
                     <img 
                       src={founder.image} 
                       alt={founder.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-pink-900/60 via-transparent to-transparent"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent ${
+                      darkMode ? 'from-purple-900/80' : 'from-pink-900/60'
+                    }`}></div>
                   </div>
                   <div className="p-8">
-                    <h3 className="text-3xl font-black text-gray-900 mb-2">{founder.name}</h3>
-                    <p className="text-xl text-pink-600 font-bold mb-4">{founder.title}</p>
-                    <p className="text-gray-700 leading-relaxed mb-6">{founder.bio}</p>
+                    <h3 className={`text-3xl font-black mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{founder.name}</h3>
+                    <p className={`text-xl font-bold mb-4 ${darkMode ? 'text-purple-400' : 'text-pink-600'}`}>{founder.title}</p>
+                    <p className={`leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{founder.bio}</p>
                     
                     <div className="space-y-2">
                       {founder.credentials.map((cred, i) => (
-                        <div key={i} className="flex items-center text-sm text-gray-600">
+                        <div key={i} className={`flex items-center text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                           <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                           {cred}
                         </div>
@@ -533,19 +559,27 @@ export default function LandingPage() {
       {/* Final CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-r from-pink-500 via-orange-400 to-rose-500 rounded-3xl p-12 md:p-16 shadow-2xl text-center text-white">
+          <div className={`rounded-3xl p-12 md:p-16 shadow-2xl text-center text-white ${
+            darkMode 
+              ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600' 
+              : 'bg-gradient-to-r from-pink-500 via-orange-400 to-rose-500'
+          }`}>
             <h2 className="text-4xl md:text-6xl font-black mb-6">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl md:text-2xl mb-8 text-pink-100">
+            <p className={`text-xl md:text-2xl mb-8 ${darkMode ? 'text-purple-100' : 'text-pink-100'}`}>
               Join 50,000+ professionals growing their careers with HairCoaction
             </p>
             <Link href="/signup">
-              <button className="px-10 py-5 bg-white text-pink-600 rounded-2xl font-bold text-xl hover:scale-110 hover:shadow-2xl transition-all duration-300 shadow-lg">
+              <button className={`px-10 py-5 rounded-2xl font-bold text-xl hover:scale-110 hover:shadow-2xl transition-all duration-300 shadow-lg ${
+                darkMode 
+                  ? 'bg-white text-purple-600' 
+                  : 'bg-white text-pink-600'
+              }`}>
                 Start Free 30-Day Trial
               </button>
             </Link>
-            <p className="mt-6 text-pink-100">
+            <p className={`mt-6 ${darkMode ? 'text-purple-100' : 'text-pink-100'}`}>
               No credit card required • Cancel anytime • 24/7 support
             </p>
           </div>
