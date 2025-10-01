@@ -47,18 +47,18 @@ export default function LandingPage() {
 
   const founders = [
     {
-      name: 'Dr. Sarah Johnson',
+      name: 'Co-Founder',
       title: 'Founder & CEO',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?w=400&h=400&fit=crop',
-      bio: 'With over 15 years in the hair care industry, Sarah is a certified trichologist and passionate advocate for hair health education.',
-      credentials: ['PhD in Trichology', 'Licensed Cosmetologist', '15+ Years Experience']
+      image: '/images/founders/founder-1.jpg',
+      bio: 'Passionate about revolutionizing the hair care industry with innovative technology and personalized solutions for professionals and clients worldwide.',
+      credentials: ['Industry Expert', 'Technology Innovator', 'Community Builder']
     },
     {
-      name: 'Michael Chen',
+      name: 'Co-Founder',
       title: 'Co-Founder & CTO',
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=400&h=400&fit=crop',
-      bio: 'A tech visionary with expertise in AI and platform development, Michael brings cutting-edge technology to hair care.',
-      credentials: ['MS in Computer Science', 'AI Specialist', 'Former Tech Lead at Google']
+      image: '/images/founders/founder-2.jpg',
+      bio: 'Dedicated to creating a seamless platform that empowers hair care professionals with cutting-edge tools and connects them with a thriving community.',
+      credentials: ['Platform Architect', 'UX/UI Specialist', 'Growth Strategist']
     }
   ]
 
