@@ -31,17 +31,17 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
   const pathname = usePathname()
 
   const navigationItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: Home, color: 'from-pink-500 to-rose-400', path: '/dashboard' },
-    { id: 'education', label: 'Education', icon: BookOpen, color: 'from-orange-400 to-pink-400', path: '/dashboard/education' },
-    { id: 'consultation', label: 'Consultation', icon: Stethoscope, color: 'from-pink-500 to-rose-400', path: '/dashboard/consultation' },
-    { id: 'event', label: 'Event', icon: Calendar, color: 'from-orange-400 to-pink-500', path: '/dashboard/event' },
-    { id: 'community', label: 'Community', icon: Users, color: 'from-purple-500 to-pink-500', path: '/dashboard/community' },
+    { id: 'dashboard', label: 'Dashboard', icon: Home, color: 'from-purple-500 to-pink-500', path: '/dashboard' },
+    { id: 'education', label: 'Education', icon: BookOpen, color: 'from-pink-500 to-blue-500', path: '/dashboard/education' },
+    { id: 'consultation', label: 'Consultation', icon: Stethoscope, color: 'from-blue-500 to-purple-500', path: '/dashboard/consultation' },
+    { id: 'event', label: 'Event', icon: Calendar, color: 'from-purple-600 to-pink-600', path: '/dashboard/event' },
+    { id: 'community', label: 'Community', icon: Users, color: 'from-pink-600 to-blue-600', path: '/dashboard/community' },
   ]
 
   const stats = [
-    { label: 'Health Score', value: '8.5/10', icon: Heart, gradient: 'from-pink-400 to-rose-400' },
-    { label: 'Streak Days', value: '12', icon: Calendar, gradient: 'from-rose-400 to-pink-500' },
-    { label: 'Products Used', value: '24', icon: Star, gradient: 'from-pink-500 to-orange-400' },
+    { label: 'Health Score', value: '8.5/10', icon: Heart, gradient: 'from-purple-500 to-pink-500' },
+    { label: 'Streak Days', value: '12', icon: Calendar, gradient: 'from-pink-500 to-blue-500' },
+    { label: 'Products Used', value: '24', icon: Star, gradient: 'from-blue-500 to-purple-500' },
   ]
 
   return (
@@ -49,7 +49,7 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 bg-gradient-to-r from-pink-500 to-rose-400 text-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        className="lg:hidden fixed top-4 left-4 z-50 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
       >
         {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
@@ -64,28 +64,28 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-0 h-full ${darkMode ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-r border-gray-700' : 'bg-gradient-to-b from-pink-50 via-rose-50 to-orange-50 border-r border-pink-100'} shadow-2xl z-40 transition-all duration-300 ${
+        className={`fixed left-0 top-0 h-full ${darkMode ? 'bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 border-r border-purple-800/50' : 'bg-gradient-to-b from-pink-50 via-rose-50 to-orange-50 border-r border-pink-100'} shadow-2xl z-40 transition-all duration-300 ${
           isCollapsed ? 'w-20' : 'w-80'
         } ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 flex flex-col`}
+        } lg:translate-x-0 flex flex-col backdrop-blur-xl`}
       >
         {/* Header */}
-        <div className={`p-6 border-b ${darkMode ? 'border-gray-700 bg-gray-900/70' : 'border-pink-100 bg-white/50'} backdrop-blur-sm`}>
+        <div className={`p-6 border-b ${darkMode ? 'border-purple-800/50 bg-gray-900/70' : 'border-pink-100 bg-white/50'} backdrop-blur-sm`}>
           <div className="flex items-center justify-between">
             {!isCollapsed && (
               <div>
-                <h1 className={`text-xl font-bold ${darkMode ? 'text-gray-300' : 'bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent'}`}>
-                  Hair Coaction
+                <h1 className={`text-xl font-bold ${darkMode ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent' : 'bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent'}`}>
+                  HairCoaction
                 </h1>
-                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Hair Care</p>
+                <p className={`text-sm ${darkMode ? 'text-purple-300' : 'text-gray-600'}`}>Professional Platform</p>
               </div>
             )}
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className={`hidden lg:flex p-2 rounded-lg transition-all duration-200 hover:scale-110 ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-pink-100'}`}
+              className={`hidden lg:flex p-2 rounded-lg transition-all duration-200 hover:scale-110 ${darkMode ? 'hover:bg-purple-900/50' : 'hover:bg-pink-100'}`}
             >
-              <ChevronRight className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-600'} transition-transform ${isCollapsed ? 'rotate-0' : 'rotate-180'}`} />
+              <ChevronRight className={`w-5 h-5 ${darkMode ? 'text-purple-400' : 'text-gray-600'} transition-transform ${isCollapsed ? 'rotate-0' : 'rotate-180'}`} />
             </button>
           </div>
         </div>
@@ -95,17 +95,17 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
           {/* Quick Stats */}
           {!isCollapsed && (
             <div className="p-6">
-              <h3 className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-4 uppercase tracking-wide`}>Quick Stats</h3>
+              <h3 className={`text-sm font-semibold ${darkMode ? 'text-purple-300' : 'text-gray-700'} mb-4 uppercase tracking-wide`}>Quick Stats</h3>
               <div className="space-y-3">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="bg-white/70 backdrop-blur-sm rounded-xl p-4 hover:scale-105 transition-transform">
+                  <div key={stat.label} className={`backdrop-blur-sm rounded-xl p-4 hover:scale-105 transition-transform border ${darkMode ? 'bg-gray-800/50 border-purple-800/50' : 'bg-white/70 border-pink-100'}`}>
                     <div className="flex items-center space-x-3">
-                      <div className={`bg-gradient-to-r ${stat.gradient} w-10 h-10 rounded-lg flex items-center justify-center shadow-md`}>
+                      <div className={`bg-gradient-to-r ${stat.gradient} w-10 h-10 rounded-lg flex items-center justify-center shadow-lg`}>
                         <stat.icon className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">{stat.label}</p>
-                        <p className="font-bold text-gray-800">{stat.value}</p>
+                        <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</p>
+                        <p className={`font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{stat.value}</p>
                       </div>
                     </div>
                   </div>
@@ -116,7 +116,7 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
 
           {/* Navigation */}
           <div className="px-6 py-4">
-            <h3 className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-4 uppercase tracking-wide ${isCollapsed ? 'text-center' : ''}`}>
+            <h3 className={`text-sm font-semibold ${darkMode ? 'text-purple-300' : 'text-gray-700'} mb-4 uppercase tracking-wide ${isCollapsed ? 'text-center' : ''}`}>
               {isCollapsed ? '•••' : 'Navigation'}
             </h3>
             <nav className="space-y-2">
@@ -127,11 +127,9 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
                   onClick={() => setIsMobileOpen(false)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                     pathname === item.path
-                      ? darkMode 
-                        ? 'bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg' 
-                        : `bg-gradient-to-r ${item.color} text-white shadow-lg`
+                      ? `bg-gradient-to-r ${item.color} text-white shadow-lg hover:shadow-xl hover:scale-105`
                       : darkMode 
-                        ? 'text-gray-300 hover:bg-gray-800 hover:text-white' 
+                        ? 'text-gray-300 hover:bg-purple-900/50 hover:text-white' 
                         : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
                   } ${isCollapsed ? 'justify-center' : ''}`}
                 >
@@ -143,15 +141,15 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
           </div>
 
           {/* Quick Actions */}
-          <div className="px-6 py-4 border-t border-pink-100 mt-auto">
-            <h3 className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-4 uppercase tracking-wide ${isCollapsed ? 'text-center' : ''}`}>
+          <div className={`px-6 py-4 border-t ${darkMode ? 'border-purple-800/50' : 'border-pink-100'} mt-auto`}>
+            <h3 className={`text-sm font-semibold ${darkMode ? 'text-purple-300' : 'text-gray-700'} mb-4 uppercase tracking-wide ${isCollapsed ? 'text-center' : ''}`}>
               {isCollapsed ? '•••' : 'Quick Actions'}
             </h3>
             <div className="space-y-2">
               <Link
                 href="/dashboard/profile"
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  darkMode ? 'text-gray-300 hover:bg-gray-800 hover:text-white' : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
+                  darkMode ? 'text-purple-300 hover:bg-purple-900/50 hover:text-white' : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
                 } ${isCollapsed ? 'justify-center' : ''}`}
               >
                 <User className="w-5 h-5" />
@@ -159,7 +157,7 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
               </Link>
               <button
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  darkMode ? 'text-gray-300 hover:bg-gray-800 hover:text-white' : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
+                  darkMode ? 'text-purple-300 hover:bg-purple-900/50 hover:text-white' : 'text-gray-700 hover:bg-white/70 hover:text-gray-900'
                 } ${isCollapsed ? 'justify-center' : ''}`}
               >
                 <Settings className="w-5 h-5" />
@@ -170,22 +168,22 @@ export default function Sidebar({ user, darkMode, onSignOut }: SidebarProps) {
         </div>
 
         {/* User Profile */}
-        <div className={`p-6 border-t ${darkMode ? 'border-gray-700 bg-gray-900/70' : 'border-pink-100 bg-white/30'} backdrop-blur-sm`}>
+        <div className={`p-6 border-t ${darkMode ? 'border-purple-800/50 bg-gray-900/70' : 'border-pink-100 bg-white/30'} backdrop-blur-sm`}>
           <div className={`flex items-center space-x-3 ${isCollapsed ? 'justify-center' : ''}`}>
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${darkMode ? 'bg-gradient-to-r from-gray-700 to-gray-900' : 'bg-gradient-to-r from-pink-500 to-rose-400'}`}>
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${darkMode ? 'bg-gradient-to-r from-purple-600 to-pink-600' : 'bg-gradient-to-r from-pink-500 to-rose-400'}`}>
               <User className="w-5 h-5 text-white" />
             </div>
             {!isCollapsed && (
               <>
                 <div className="flex-1">
                   <p className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{user?.email?.split('@')[0] || 'User'}</p>
-                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Premium Member</p>
+                  <p className={`text-sm ${darkMode ? 'text-purple-300' : 'text-gray-600'}`}>Premium Member</p>
                 </div>
                 <button 
                   onClick={onSignOut}
-                  className={`p-2 rounded-lg transition-all duration-200 hover:scale-110 ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-pink-100'}`}
+                  className={`p-2 rounded-lg transition-all duration-200 hover:scale-110 ${darkMode ? 'hover:bg-purple-900/50 text-purple-300' : 'hover:bg-pink-100'}`}
                 >
-                  <LogOut className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} />
+                  <LogOut className={`w-4 h-4 ${darkMode ? 'text-purple-400' : 'text-gray-600'}`} />
                 </button>
               </>
             )}
