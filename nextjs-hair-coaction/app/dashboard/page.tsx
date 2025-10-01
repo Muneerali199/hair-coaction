@@ -202,7 +202,7 @@ export default function DashboardPage() {
             <h2 className="text-4xl font-black mb-2">
               Welcome back, {user?.email?.split('@')[0] || 'User'}! 👋
             </h2>
-            <p className="text-pink-100 text-lg">Your hair is looking amazing! Here's your dashboard overview.</p>
+            <p className="text-pink-100 text-lg">Your hair is looking amazing! Here&apos;s your dashboard overview.</p>
           </div>
           <div className="flex gap-3">
             <button className="px-6 py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2">

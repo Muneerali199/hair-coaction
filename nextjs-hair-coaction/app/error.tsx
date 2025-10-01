@@ -22,7 +22,7 @@ export default function Error({
           <AlertCircle className="w-8 h-8 text-red-400" />
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">Oops! Something went wrong</h2>
-        <p className="text-gray-300 mb-6">We're sorry for the inconvenience. Please try again.</p>
+        <p className="text-gray-300 mb-6">We&apos;re sorry for the inconvenience. Please try again.</p>
         {process.env.NODE_ENV === 'development' && (
           <p className="text-sm text-red-400 mb-4 font-mono bg-red-900/20 p-2 rounded">
             {error.message}

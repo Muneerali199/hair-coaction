@@ -244,7 +244,7 @@ export default function LandingPage() {
               <p className={`text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0 leading-relaxed ${
                 darkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                Join the world's leading platform connecting hair care professionals with clients, education, and a thriving community.
+                Join the world&apos;s leading platform connecting hair care professionals with clients, education, and a thriving community.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
