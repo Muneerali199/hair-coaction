@@ -1,10 +1,5 @@
-interface ConsultationProps {
-  user: any;
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-  darkMode?: boolean;
-}
 import React, { useState, useRef, useEffect } from "react"
+import { User } from "firebase/auth"
 import {
   MessageCircle,
   Send,
@@ -21,6 +16,13 @@ import {
   Shield,
   Award,
 } from "lucide-react"
+
+interface ConsultationProps {
+  user: User;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  darkMode?: boolean;
+}
 
 
 interface Message {

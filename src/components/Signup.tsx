@@ -15,8 +15,9 @@ const Signup: React.FC = () => {
       const { createUserWithEmailAndPassword } = await import('firebase/auth');
       await createUserWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'Registration failed');
+    } catch (err) {
+      const error = err as { message?: string };
+      setError(error.message || 'Registration failed');
     }
   };
 
@@ -25,8 +26,9 @@ const Signup: React.FC = () => {
     try {
       await signInWithPopup(auth, provider);
       navigate('/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'Google sign in failed');
+    } catch (err) {
+      const error = err as { message?: string };
+      setError(error.message || 'Google sign in failed');
     }
   };
 

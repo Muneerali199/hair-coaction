@@ -384,7 +384,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ user }) => {
                   ].map(({ key, label, icon: Icon }) => (
                     <button
                       key={key}
-                      onClick={() => setActiveTab(key as any)}
+                      onClick={() => setActiveTab(key as "posts" | "events" | "challenges")}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all ${
                         activeTab === key
                           ? "bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-md"
