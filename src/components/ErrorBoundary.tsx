@@ -53,7 +53,7 @@ class ErrorBoundary extends Component<Props, State> {
               <p className="text-gray-600 mb-4">
                 We encountered an unexpected error. Don't worry, we're on it!
               </p>
-              {import.meta.env.DEV && this.state.error && (
+              {process.env.NODE_ENV === 'development' && this.state.error && (
                 <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
                   <p className="text-sm font-mono text-red-800 break-all">
                     {this.state.error.message}

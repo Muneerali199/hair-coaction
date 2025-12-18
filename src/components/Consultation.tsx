@@ -43,7 +43,7 @@ interface Specialist {
   specialties: string[];
 }
 
-const Consultation: React.FC<ConsultationProps> = ({ user: _user, activeTab: _activeTab, setActiveTab: _setActiveTab, darkMode }) => {
+const Consultation: React.FC<ConsultationProps> = ({ user: _user, activeTab: _activeTab, setActiveTab: _setActiveTab, darkMode: _darkMode }) => {
   const [activeChat, setActiveChat] = useState<"chatbot" | "dermatology" | "trichology">("chatbot");
   const [messages, setMessages] = useState<Record<string, Message[]>>({
     chatbot: [
