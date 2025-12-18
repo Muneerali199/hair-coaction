@@ -1,10 +1,5 @@
-interface ConsultationProps {
-  user: any;
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-  darkMode?: boolean;
-}
 import React, { useState, useRef, useEffect } from "react"
+import { User } from "firebase/auth"
 import {
   MessageCircle,
   Send,
@@ -21,6 +16,13 @@ import {
   Shield,
   Award,
 } from "lucide-react"
+
+interface ConsultationProps {
+  user: User;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  darkMode?: boolean;
+}
 
 
 interface Message {
@@ -41,7 +43,7 @@ interface Specialist {
   specialties: string[];
 }
 
-const Consultation: React.FC<ConsultationProps> = ({ user, activeTab, setActiveTab, darkMode }) => {
+const Consultation: React.FC<ConsultationProps> = ({ user: _user, activeTab: _activeTab, setActiveTab: _setActiveTab, darkMode: _darkMode }) => {
   const [activeChat, setActiveChat] = useState<"chatbot" | "dermatology" | "trichology">("chatbot");
   const [messages, setMessages] = useState<Record<string, Message[]>>({
     chatbot: [

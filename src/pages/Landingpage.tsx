@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Star, Users, Award, Zap, Shield, TrendingUp, Heart, Check, Mail, Phone, MapPin, Play, ChevronDown, Menu, X, Moon, Sun, Calendar, BookOpen, MessageCircle, BarChart3, Lock, Sparkles } from 'lucide-react';
+import { ArrowRight, Star, Users, Award, Zap, Shield, TrendingUp, Heart, Check, Mail, Phone, MapPin, Play, Menu, X, Moon, Sun, Calendar, BookOpen, MessageCircle, BarChart3, Lock, Sparkles } from 'lucide-react';
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
